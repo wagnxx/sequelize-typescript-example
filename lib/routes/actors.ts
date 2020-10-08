@@ -26,7 +26,11 @@ actors.post('/:id/movies/:movieId', async (req, res, next) => {
 
 actors.get('', async (req, res, next) => {
   try {
-    res.json(await Actor.scope(req.query['scope']).findAll());
+    res.json(await Actor.scope(req.query['scope']).findAll({
+      // attributes:{
+      //   exclude:['createdAt','updatedAt']
+      // }
+    }));
   } catch (e) {
     next(e);
   }

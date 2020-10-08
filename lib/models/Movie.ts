@@ -8,14 +8,26 @@ import {MovieGenre} from './MovieGenre';
   cast: {
     include: [{
       model: Actor,
-      through: {attributes: []},
+      // through: {attributes: []},
+      attributes:{
+        exclude:['createdAt','updatedAt']
+      }
     }],
+    attributes:{
+      exclude:['createdAt','updatedAt']
+    }
   },
   genre: {
     include: [{
       model: Genre,
-      through: {attributes: []},
-    }]
+      // through: {attributes: []},
+      attributes:{
+        exclude:['createdAt','updatedAt']
+      }
+    }],
+    attributes:{
+      exclude:['createdAt','updatedAt']
+    }
   },
   full: {
     include: [{
@@ -24,7 +36,10 @@ import {MovieGenre} from './MovieGenre';
     }, {
       model: Genre,
       through: {attributes: []},
-    }]
+    }],
+    attributes:{
+      exclude:['createdAt','updatedAt']
+    },
   }
 }))
 @Table
@@ -36,7 +51,7 @@ export class Movie extends Model<Movie> {
   @Column
   year!: number;
 
-  @BelongsToMany(() => Actor, () => MovieActor)
+  @BelongsToMany(() => Actor, {through:()=>MovieActor})
   cast?: Actor[];
 
   @BelongsToMany(() => Genre, () => MovieGenre)

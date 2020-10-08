@@ -7,9 +7,17 @@ import {MovieActor} from "./MovieActor";
     include: [
       {
         model: Movie,
-        through: {attributes: []},
+        // through: {attributes: {exclude:['createdAt','updatedAt']}},
+        attributes:{
+          exclude:['createdAt','updatedAt']
+        }
       },
+    
+
     ],
+    attributes:{
+      exclude:['createdAt','updatedAt']
+    }
   },
 }))
 @Table
