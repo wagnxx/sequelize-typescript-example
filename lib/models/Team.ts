@@ -20,12 +20,18 @@ import { Op } from "sequelize";
         where: {
           num: {
             [Op.gte]: 6,
-            [Op.lte]:8
+            [Op.lte]:8,
+            // as:'player_nums'
           },
         },
+        attributes:{
+          include:[['num','players_nums'],'name','team_id']
+        }
+     
       },
     ],
     where: {},
+    raw:true
   },
 })
 @Table({

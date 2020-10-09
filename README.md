@@ -57,7 +57,15 @@ npm start
     // });
 
  
+// as single
 
+//  attributes:[['num','players_nums'],'name','team_id']
+
+// as copy 
+
+//  attributes:{
+//     include:[['num','players_nums'],'name','team_id']
+//   }
 
 
 
